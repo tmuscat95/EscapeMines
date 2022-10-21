@@ -18,7 +18,7 @@ namespace EscapeMines
                         result = Result.Success;
                         break;
                     }
-                    else if (boardState.PlayerPosition.Item1 >= boardState.BoardSize.Item1 || boardState.PlayerPosition.Item2 >= boardState.BoardSize.Item2)
+                    else if (boardState.PlayerPosition.Item1 < 0 || boardState.PlayerPosition.Item2 < 0 || boardState.PlayerPosition.Item1 >= boardState.BoardSize.Item1 || boardState.PlayerPosition.Item2 >= boardState.BoardSize.Item2)
                     {
                         result = Result.IllegalMove;
                         break;
