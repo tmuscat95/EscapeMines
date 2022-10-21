@@ -74,8 +74,30 @@ namespace Tests
             Assert.That(BoardState.PlayerPosition, Is.EqualTo((1, 0)));
             EscapeMinesMain.PlayGame(BoardState, MovesSequences[1]);
             Assert.That(BoardState.PlayerPosition, Is.EqualTo((0, 0)));
+        }
 
+        [Test]
+        [Description("Tests whether correct result is returned when a move instruction moves the turtle to a position outside of the grid bounds.")]
+        public void OutOfBoundsTest()
+        {
+            List<string> lines = new List<string>();
+            lines.Add("5 4");//board size
+            lines.Add("4,3");//mines
+            lines.Add("4 2");//exit
+            lines.Add("0 0 S");
+            lines.Add("M");
+            InitializeTest(lines);
 
+            Assert.That(EscapeMinesMain.PlayGame(BoardState, MovesSequences[0]), Is.EqualTo(EscapeMines.Types.Result.IllegalMove));
+
+            lines = new List<string>();
+            lines.Add("5 4");//board size
+            lines.Add("4,3");//mines
+            lines.Add("4 2");//exit
+            lines.Add("0 0 W");
+            lines.Add("M");
+            InitializeTest(lines);
+            Assert.That(EscapeMinesMain.PlayGame(BoardState, MovesSequences[0]), Is.EqualTo(EscapeMines.Types.Result.IllegalMove));
         }
 
         [Test]
