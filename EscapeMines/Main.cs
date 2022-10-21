@@ -13,21 +13,7 @@ namespace EscapeMines
 
                 foreach (var move in moves)
                 {
-                    if (boardState.PlayerPosition.Item1 == boardState.ExitPoint.Item1 && boardState.PlayerPosition.Item2 == boardState.ExitPoint.Item2)
-                    {
-                        result = Result.Success;
-                        break;
-                    }
-                    else if (boardState.PlayerPosition.Item1 < 0 || boardState.PlayerPosition.Item2 < 0 || boardState.PlayerPosition.Item1 >= boardState.BoardSize.Item1 || boardState.PlayerPosition.Item2 >= boardState.BoardSize.Item2)
-                    {
-                        result = Result.IllegalMove;
-                        break;
-                    }
-                    else if (boardState.MineLocations.Contains((boardState.PlayerPosition.Item1, boardState.PlayerPosition.Item2)))
-                    {
-                        result = Result.MineHit;
-                        break;
-                    }
+                   
 
                     if (move == Move.Move)
                     {
@@ -83,7 +69,23 @@ namespace EscapeMines
                                 break;
                         }
                     }
+
+                if (boardState.PlayerPosition.Item1 == boardState.ExitPoint.Item1 && boardState.PlayerPosition.Item2 == boardState.ExitPoint.Item2)
+                {
+                    result = Result.Success;
+                    break;
                 }
+                else if (boardState.PlayerPosition.Item1 < 0 || boardState.PlayerPosition.Item2 < 0 || boardState.PlayerPosition.Item1 >= boardState.BoardSize.Item1 || boardState.PlayerPosition.Item2 >= boardState.BoardSize.Item2)
+                {
+                    result = Result.IllegalMove;
+                    break;
+                }
+                else if (boardState.MineLocations.Contains((boardState.PlayerPosition.Item1, boardState.PlayerPosition.Item2)))
+                {
+                    result = Result.MineHit;
+                    break;
+                }
+            }
 
                 //bool moveToNextSequence = false;
                 switch (result)
