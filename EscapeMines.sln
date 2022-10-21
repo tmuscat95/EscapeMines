@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EscapeMines", "EscapeMines\EscapeMines.csproj", "{88896EE8-F4E5-4CF8-8753-C91AB1814E1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{74CFF137-877D-4A90-B591-0D3FB32A28BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{88896EE8-F4E5-4CF8-8753-C91AB1814E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88896EE8-F4E5-4CF8-8753-C91AB1814E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88896EE8-F4E5-4CF8-8753-C91AB1814E1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74CFF137-877D-4A90-B591-0D3FB32A28BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74CFF137-877D-4A90-B591-0D3FB32A28BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74CFF137-877D-4A90-B591-0D3FB32A28BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74CFF137-877D-4A90-B591-0D3FB32A28BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
