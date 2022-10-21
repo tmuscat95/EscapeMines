@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "EscapeMines": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\timmu\\source\\repos\\EscapeMines\\EscapeMines"
+    }
+  }
+}
