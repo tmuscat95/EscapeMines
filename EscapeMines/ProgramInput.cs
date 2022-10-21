@@ -15,18 +15,17 @@ namespace EscapeMines
         LeftRotate,
         Move
     }
-    class ProgramInput
+    public class ProgramInput
     {
 
-        public ProgramInput()
+        public ProgramInput(string[] lines)
         {
-            var lines = File.ReadAllLines("config.txt");
             if (lines.Length < 5)
             {
                 throw new ConfigException("Incorrect Number Of Lines");
             }
 
-            List<Move> moves = new List<Move>();
+            
             for (int i = 0; i < lines.Length; i++)
             {
                 try
@@ -97,6 +96,7 @@ namespace EscapeMines
 
                     if (i >= 4)
                     {
+                        List<Move> moves = new List<Move>();
                         var moveStrings = line.Split();
                         foreach(var moveString in moveStrings)
                         {
@@ -111,8 +111,11 @@ namespace EscapeMines
                                 case "M":
                                     moves.Add(Move.Move);
                                     break;
+                                default:
+                                    throw new Exception();
                             }
                         }
+                        this.MovesSequences.Add(moves);
                     }
 
                 }
@@ -123,7 +126,7 @@ namespace EscapeMines
 
             }
 
-            this.Moves = moves;
+            
         }
         public (int, int) BoardSize { get; set; } = (1, 1);
         public List<(int, int)> Mines { get; set; } = new List<(int, int)>();
@@ -132,7 +135,7 @@ namespace EscapeMines
 
         public (int, int, Direction) StartPoint { get; set; } = (0, 0, Direction.North);
 
-        public List<Move> Moves { get; set; } = new List<Move>();
+        public List<List<Move>> MovesSequences { get; set; } = new List<List<Move>>();
 
     }
 }

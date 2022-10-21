@@ -3,17 +3,13 @@ using EscapeMines.Types;
 
 namespace EscapeMines
 {
-    partial class EscapeMines
+    public class EscapeMinesMain
     {
-        public static void Main(string[] args)
+        public static Result PlayGame(BoardState boardState, List<Move> moves)
         {
-            Result result = Result.StillInDanger;
-            try
-            {
-                var programInput = new ProgramInput();
-
-                BoardState boardState = new BoardState(programInput);
-                var moves = programInput.Moves;
+            //try
+            //{
+                Result result = Result.StillInDanger;
 
                 foreach (var move in moves)
                 {
@@ -89,6 +85,7 @@ namespace EscapeMines
                     }
                 }
 
+                //bool moveToNextSequence = false;
                 switch (result)
                 {
                     case Result.Success:
@@ -98,20 +95,40 @@ namespace EscapeMines
                         Console.WriteLine("Failure. Turtle Has Hit A Mine.");
                         break;
                     case Result.StillInDanger:
+                        //moveToNextSequence = true;
                         Console.WriteLine("Turtle has not reached the end of the maze.");
                         break;
                     default:
                         Console.WriteLine("Illegal Move Detected (Out Of Bounds)");
                         break;
                 }
-                Console.ReadLine();
+                return result;
 
-            }
-            catch (ConfigException e)
-            {
-                Console.Error.WriteLine(e.Message);
-            }
+            //}
+            //catch (ConfigException e)
+            //{
+            //    Console.Error.WriteLine(e.Message);
+            //    return Result.;
+            //}
         }
 
+        public static void Main(string[] args)
+        {
+            var lines = File.ReadAllLines("config.txt");
+            var programInput = new ProgramInput(lines);
+
+            BoardState boardState = new BoardState(programInput);
+            var movesSequences = programInput.MovesSequences;
+
+            foreach (var moves in movesSequences)
+            {
+                if(!(PlayGame(boardState, moves) == Result.StillInDanger))
+                {
+                    break;
+                }
+                Console.ReadLine();
+            }
+            Console.ReadLine();
+        }
     }
 }
